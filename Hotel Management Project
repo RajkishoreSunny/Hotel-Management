@@ -1,0 +1,184 @@
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+#include <bits/stdc++.h>
+using namespace std;
+
+class hotel
+{
+public:
+int rno; long long mobile;
+char name[40], gen;
+char bs[20], ds[20];
+
+void accept()
+{
+cout << "\nEnter Your Name : ";
+cin >> name;
+cout << endl;
+cout << "Enter Your Mobile Number : ";
+cin >> mobile;
+cout << endl;
+cout << "Enter Your Gender(M/F) : ";
+cin >> gen;
+cout << endl;
+cout << "Enter the Type Of Room You Wish : ";
+cin >> bs;
+cout << endl;
+cout << "Enter Expected Room Price You Wish To Have : ";
+cin >> ds;
+cout << endl;
+}
+
+void display()
+{
+cout << "\n Name : " << name;
+cout << "\n Mobile : " << mobile;
+cout << "\n Gender : " << gen;
+cout << "\n Type of Room Selected : " << bs;
+cout << "\n Expected Room Price To Have : " << ds;
+}
+};
+
+class second : public hotel
+{
+public:
+
+void accept1()
+{
+cout << "\n Ac Rooms" << endl;
+cout << " from room no. 1-31" << endl;;
+cout << " Starting from Rs 10000" << endl;
+cout << "*****************************" << endl;
+cout << " Non-Ac Rooms" << endl;
+cout << " from room no. 32-45" << endl;
+cout << " Starting from Rs 5000" << endl;
+cout << "******************************" << endl;
+cout << " Luxury Rooms" << endl;
+cout << " from room no. 46-60" << endl;
+cout << " Starting from Rs 20000" << endl;
+cout << "******************************" << endl;
+cout << " Ordinary Rooms" << endl;
+cout << " from room no. 61-75" << endl;
+cout << " Starting from Rs 2000" << endl;
+cout << "******************************" << endl;
+cout << " Regular rooms" << endl;
+cout << " from room no. 76-100" << endl;
+cout << " Starting from Rs 1000" << endl;
+cout << "******************************" << endl;
+}
+};
+
+int main()
+{
+second s;
+int ch, a[10], n, i, b, flag = 0, c, p;
+long long acc;
+char ch1, ch2, ch3;
+do
+{
+cout << "\n \n \t \t \t **RAJ GROUP OF HOTELS**";
+cout << "\n Main Menu:";
+cout << "\n  1. Room Details";
+cout << "\n  2. Book A Room.";
+cout << "\n  3. Edit Records.";
+cout << "\n  4. Room Cancellation.";
+cout << "\n  5. Exit.";
+cout << "\n Enter your Choice : ";
+cin >> ch;
+
+switch(ch)
+{
+case 1:
+       cout << "\n \t \t\t ---Room Details---";
+       s.accept1();
+       break;
+case 2:
+       cout << "\n \t \t \t **Book a Room**";
+       cout << "\nEnter the Number of Rooms To be Reserved : ";
+       cin >> n;
+       s.rno = 1;
+       for(i = 0;i < n;i++)
+       {
+	   s.accept();
+	   s.display();
+       cout << "\n \t \t  ---Your Room is Booked---";
+
+       cout << "\n Alotted Room No. is: " << s.rno;
+       s.rno++;
+       p = s.rno;
+       if(s.mobile <= 10 || s.mobile >= 60)
+	   cout << "\n \t \t \t ---THANK YOU---\n";
+	 }
+       break;
+case 3:
+       cout << "\n \t \t \t **Change your Room details**";
+       cout << "\nEnter Your Room Number : ";
+       cin >> c;
+       s.rno--;
+       for(i = 0;i < n;i++)
+       {
+       if(s.rno == c)
+       {
+       flag = 1;
+       }
+       else
+       {
+       flag = 0;
+       s.rno--;
+       }
+       }
+       if(flag == 1)
+       {
+       s.accept();
+       cout << "\n \t \t \t --Your Room & Personal Information has been Changed.--";
+       cout << "\n \t \t \t --Hope you liked the service. :)--";
+       s.display();
+       }
+       else
+       {
+       cout << "\n **Please Enter a valid Room Number**";
+       s.rno--;
+       }
+       break;
+case 4:
+       cout << "\n \t \t \t **Room cancellation**";
+       cout << "\n Enter Your Room Number : ";
+       cin >> b;
+       p--;
+       for(i = 0;i < n;i++)
+       {
+       if(p == b)
+       {
+       flag = 1;
+       }
+       else
+       {
+       flag = 0;
+       p--;
+       }
+       }
+       if(flag == 1)
+       {
+       cout << "\n Your Room has been Cancelled!!";
+       cout << "\n Please Enter Your Bank Account Number : ";
+       cin >> acc;
+       cout << "\n \t \t \t --Your Payment has been Transferred directly to your bank account.--" << endl;
+       cout << "\n \t \t \t --Hope You visit again for your Vacation-- :)";
+       }
+       else
+       {
+       cout << "\n **Please Enter a valid Room Number**";
+       p--;
+       }
+       break;
+case 5:
+	   cout << "\n \t \t \t ----THANKS FOR SPENDING YOUR VALUABLE TIME WITH US!!!----" << endl;
+	   cout << "\n \t \t \t \t \t ----PLEASE VISIT AGAIN !!!----";
+       exit(0);
+}
+cout << "\n Do you want to enter another Choice(y/n)";
+ch3 = getche();
+}
+while(ch3 == 'y' || ch3 == 'Y');
+}
